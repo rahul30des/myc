@@ -13,7 +13,7 @@ void rotate(vector<vector<int>>& matrix, int row, int col) {
     }
     for(int i = 0; i < (row/2); i++) {
         for(int j = 0; j < col; j++) {
-            swap(matrix[i][j], matrix[col - i - 1][j]);
+            swap(matrix[i][j], matrix[row - i - 1][j]);
         }
     }    
 }
