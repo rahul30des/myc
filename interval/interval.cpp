@@ -32,12 +32,14 @@ class IntervalUtil:public Intervals {
     }
 
     int getTotalCoveredLength() {
+        int total = 0;
         pair <int, int> hpair;
         pair <int, int> ppair;
         for(auto it = hmap.begin(); it!=hmap.end() ; it++) {
             hpair = *it;
             if (it == hmap.begin()) {
                 ppair = hpair;
+                total = hpair.second - hpair.first + 1;
             } else {
                 if (hpair.first <= ppair.second) {
                     if(hpair.second <= ppair.second) {
@@ -47,17 +49,19 @@ class IntervalUtil:public Intervals {
                         continue;
                     } else { 
                         // Extend lower bound on previous
+                        total += hpair.second - ppair.second;
                         ppair.second = hpair.second;
                         --it;
                         hmap.erase(hpair.first);
                         continue;
                     }
                 }  
+                total += (hpair.second - hpair.first + 1);
                 // Update ppair
                 ppair = hpair;
             }
         }
-        return hmap.size();
+        return total;
     }
 };
 
@@ -73,3 +77,4 @@ int main() {
 
     return 0;
 }
+
