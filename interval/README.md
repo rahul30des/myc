@@ -10,6 +10,6 @@
   (1,6)
   (8,9)
   *
-  * getTotalCoveredLength() -> 6
+  * getTotalCoveredLength() -> 7
   *
   */
