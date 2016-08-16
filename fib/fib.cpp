@@ -1,20 +1,28 @@
 #include <iostream>
+#include <vector>
 
-using namepsace std;
+using namespace std;
 
-int fib(int num) {
-    if (num == 1 || num == 2) {
-        return 1;
+// DP solution - memoization
+int fib(int n, vector <int>&  arr) {
+    if (arr[n] == -1) {
+        if (n == 0) {
+            arr[n] = 0;
+        } else if (n == 1 || n == 2) {
+            arr[n] = 1;
+        } else {
+            arr[n] = fib(n-1, arr) + fib(n-2, arr);
+        }
     }
-    if (num == 0) {
-        return 0;
-    }
-    return fib(n - 1) + fib (n - 2); 
+
+    return arr[n];
 }
+
 // Find nth Fibonacci number
 int main() {
     int n = 0;
     cin>>n;
-    cout<<fib(n);
+    vector <int> arr(n+1, -1);
+    cout<<fib(n, arr);
     return 0;
 }
