@@ -1,18 +1,17 @@
 #include <iostream>
+
 using namespace std;
 
 class Queue {
     int *arr;
-    int front; 
-    int rear; 
-    int count;
+    int front; // Points to next location after popping current
+    int rear;  // Needs to be incremented before push
     int qsize;
     bool QFull() {
-        return (count == qsize);
+        return ((rear+1)%qsize == front);
     }
-    
     bool QEmpty() {
-        return (count == 0);
+        return (front = rear == -1);
     }
 
   public:
@@ -23,22 +22,17 @@ class Queue {
         }
         arr = new int[size];
         
-
-        
-        front = 0;
+        front = -1;
         rear = -1;
-        count = 0;
         qsize = size;
     }
     
     int QInsert(int num) {
         if(!QFull()) {
-            // Handle case of queue filled and emptied
-            if(rear == qsize - 1) {
-                rear = -1;
-            }
-            arr[++rear] = num;
-            count++;
+            if(QEmpty()) {
+                front = 0;
+            } 
+            arr[(++rear)%qsize] = num;
             return 0;
         } else {
             return -1;
@@ -49,14 +43,16 @@ class Queue {
     int QRemove(int* removed) {  
         if(!QEmpty()) {
             *removed = arr[front++];
-            if(front == qsize) {
-                front = 0;
+            if ((front - rear) == 1) {
+                front = -1;
+                rear = -1;
+            } else {
+                front = (front)%qsize;
             }
-            count--;
             return 0;
         } else {
             return -1;
-        }
+        } 
     }
 };
 
@@ -100,7 +96,7 @@ void remove(Queue& q, int expected_item, bool should_fail) {
 int main() {
     cout<<"Running test"<<endl;
 
-    Queue q(0);
+    Queue q(5);
 
     remove(q, 1, true);
 
