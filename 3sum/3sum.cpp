@@ -27,7 +27,7 @@ int main() {
             if(sum == target) {
                 cout<<arr[i]<<" , "<<arr[j]<<" , "<<arr[k]<<endl;
                 j++;
-                k++;
+                k--;
             } else if (sum < target) {
                 j++;
             } else if (sum > target) {
