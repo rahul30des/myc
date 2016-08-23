@@ -4,14 +4,6 @@
  */
 
 #include<iostream>
-#include<algorithm>
-#include<stack>
-#include<queue>
-#include<deque>
-#include<list>
-#include<array>
-#include<map>
-#include<unordered_map>
 
 using namespace std;
 
@@ -31,13 +23,12 @@ void display(NODE *node) {
 
 // Reverse Linked List with recursion
 NODE* withRec(NODE *head) {
-    NODE *temp;
-    if(head == NULL || head->next == NULL) {
-        return head;
+    NODE *temp = head;
+    if(head  && head->next) {
+        temp = withRec(head->next);
+        head->next->next = head;
+        head->next = NULL;
     }
-    temp = withRec(head->next);
-    head->next->next = head;
-    head->next = NULL;
     return temp;
 }
 
