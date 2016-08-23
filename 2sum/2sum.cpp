@@ -15,7 +15,8 @@ int main() {
 // Space Complexity O(n)
     for(int i = 0; i < arr.size(); i++) {
         int diff = target - arr[i];
-        if(hmap[arr[i]]) {
+        // Below handle valuye being 0 by hmap.count(arr[i]) to verify existence of key
+        if(hmap[arr[i]]) { 
             cout<<arr[i]<<" , "<<hmap[arr[i]]<<endl;
             hamp.erase(arr[i]);
         } else {
