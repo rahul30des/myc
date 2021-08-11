@@ -1,2 +1,2 @@
 # myc
-My C programs
+Practice C, C++ programs
