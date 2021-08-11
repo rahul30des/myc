@@ -1,1 +1,1 @@
-Program to calculate nth Fibonacci term without memoization of results.
+Program to calculate nth Fibonacci term using memoization of results.
