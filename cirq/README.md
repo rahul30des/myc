@@ -1,1 +1,1 @@
-Implement a Circular Queue using an array
+Implement a Circular Queue using an array.
