@@ -1,1 +1,1 @@
-Program to reverse a LinkedList using recursion and without using recursion
+Program to reverse a LinkedList - both using recursion and without using recursion
