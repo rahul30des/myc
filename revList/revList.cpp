@@ -48,9 +48,9 @@ NODE* withoutRec(NODE *head) {
 
 // Main Function
 int main() {
-    NODE *temp = new NODE;
-    NODE *temp1 = new NODE;
-    NODE *temp2 = new NODE;
+    NODE *temp = new NODE();
+    NODE *temp1 = new NODE();
+    NODE *temp2 = new NODE();
     NODE *head;
     temp->data = 1;
     temp1->data = 2;
