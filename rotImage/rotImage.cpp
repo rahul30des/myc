@@ -5,23 +5,23 @@ using namespace std;
 
 // Swap 2 numbers using XOR bit manipulation operation
 void swap(int &num1, int &num2) {
-    num1 = num1 ^ num2;
-    num2 = num1 ^ num2;
-    num1 = num1 ^ num2;
+    if(num1 != num2) {
+        num1 = num1 ^ num2;
+        num2 = num1 ^ num2;
+        num1 = num1 ^ num2;
+    }
 }
 
 // Rotate the image 90 degrees to the right
 void rotate(vector<vector<int>>& mat, int row, int col) {
-    // First Pass
+    vector<vector<int>> visited(row, vector<int>(col, 0));
     for(int i = 0; i < row; i++) {
-        for(int j = i + 1; j < col; j++) {
-            swap(mat[i][j], mat[j][i]);
-        }
-    }
-    // Second Pass
-    for(int i = 0; i < row/2; i++) {
         for(int j = 0; j < col; j++) {
-            swap(mat[i][j], mat[row - i - 1][j]);
+            if(visited[i][j] == 0) {
+                swap(mat[i][j], mat[j][row-i-1]);
+                visited[i][j] = 1;
+                visited[j][row-i-1] = 1;
+            }
         }
     }
 }
@@ -38,9 +38,10 @@ void display(vector <vector<int>> mat, int row, int col) {
 
 // Main Function
 int main() {
-    vector <vector<int>> mat (2, vector<int> (5));
-    mat = {{1, 0},
-           {0, 1}};
+    vector <vector<int>> mat (3, vector<int> (3));
+    mat = {{1,2,3},
+           {4,5,6},
+           {7,8,9}};
     int row = mat.size();
     int col = mat[0].size();
     rotate(mat, row, col);
