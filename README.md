@@ -1,2 +1,2 @@
-# myc
-Practice C, C++ programs
+Sample Implementation - 
+https://techdevguide.withgoogle.com/resources/former-interview-question-minesweeper/#!
